@@ -1,0 +1,1 @@
+export { LinearFunctionGenerator } from './LinearFunctionGenerator';
