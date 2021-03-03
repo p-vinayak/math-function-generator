@@ -1,2 +1,2 @@
 export { QuadraticFunctionGenerator } from './QuadraticFunctionGenerator';
-export { QuadraticGenerationOptions } from './QuadraticGenerationOptions';
+export { QuadraticGenerationOptions, QuadraticFunctionTypes } from './QuadraticGenerationOptions';
