@@ -1,2 +1,2 @@
 export { TrigonometricFunctionGenerator } from './TrigonometricFunctionGenerator';
-export { TrigonometricGenerationOptions, TrignometricFunctionTypes } from './TrigonometricGenerationOptions';
+export { TrigonometricGenerationOptions, TrignometricFunctionType } from './TrigonometricGenerationOptions';
