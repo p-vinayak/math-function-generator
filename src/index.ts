@@ -5,4 +5,6 @@ export {
     TrigonometricFunctionGenerator,
     QuadraticGenerationOptions,
     TrigonometricGenerationOptions,
+    QuadraticFunctionTypes,
+    TrignometricFunctionTypes,
 } from './generators';

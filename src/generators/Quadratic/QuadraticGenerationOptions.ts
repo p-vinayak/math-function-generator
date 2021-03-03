@@ -1,5 +1,7 @@
 import { DefaultGenerationOptions } from '../../entities';
 
 export interface QuadraticGenerationOptions extends DefaultGenerationOptions {
-    format?: string;
+    format?: QuadraticFunctionTypes;
 }
+
+export type QuadraticFunctionTypes = 'STANDARD' | 'VERTEX' | 'FACTORED';

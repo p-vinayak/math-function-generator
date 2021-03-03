@@ -4,7 +4,6 @@ import { MathFunction, NumberRange } from '../../entities';
 import { random } from 'lodash';
 
 export class TrigonometricFunctionGenerator extends MathFunctionGenerator<TrigonometricGenerationOptions> {
-    private static SUPPORTED_TYPES: string[] = ['COS', 'SIN', 'TAN', 'COT', 'SEC', 'CSC'];
     protected mathFunctionType = 'TRIGONOMETRIC';
 
     public generate({
@@ -16,7 +15,6 @@ export class TrigonometricFunctionGenerator extends MathFunctionGenerator<Trigon
     }
 
     private generateVariances(type: string, randRange: NumberRange): string[] {
-        if (!this.hasSupportedType(type)) type = 'SIN';
         this.setSubType(type.toUpperCase());
         type = type.toLowerCase();
 
@@ -32,9 +30,5 @@ export class TrigonometricFunctionGenerator extends MathFunctionGenerator<Trigon
         ];
 
         return variances;
-    }
-
-    private hasSupportedType(type: string): boolean {
-        return TrigonometricFunctionGenerator.SUPPORTED_TYPES.includes(type.toUpperCase());
     }
 }
