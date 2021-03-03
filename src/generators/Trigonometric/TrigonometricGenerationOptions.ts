@@ -1,7 +1,7 @@
 import { DefaultGenerationOptions } from '../../entities';
 
 export interface TrigonometricGenerationOptions extends DefaultGenerationOptions {
-    type?: TrignometricFunctionTypes;
+    type?: TrignometricFunctionType;
 }
 
-export type TrignometricFunctionTypes = 'COS' | 'SIN' | 'TAN' | 'COT' | 'SEC' | 'CSC';
+export type TrignometricFunctionType = 'COS' | 'SIN' | 'TAN' | 'COT' | 'SEC' | 'CSC';
