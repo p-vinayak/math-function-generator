@@ -1,5 +1,5 @@
-import { MathFunctionGenerator } from '../MathFunctionGenerator';
-import { MathFunction, NumberRange, DefaultGenerationOptions } from '../../entities';
+import { MathFunctionGenerator } from './MathFunctionGenerator';
+import { MathFunction, NumberRange, DefaultGenerationOptions } from '../entities';
 import { random } from 'lodash';
 
 export class LinearFunctionGenerator extends MathFunctionGenerator<DefaultGenerationOptions> {
@@ -7,7 +7,7 @@ export class LinearFunctionGenerator extends MathFunctionGenerator<DefaultGenera
 
     public generate({ randRange = this.getDefaultRandRange() }: DefaultGenerationOptions = {}): MathFunction {
         const variances: string[] = this.generateVariances(randRange);
-        return this.makeMathFunction(variances);
+        return this.makeMathFunction(variances, undefined);
     }
 
     private generateVariances(randRange: NumberRange): string[] {

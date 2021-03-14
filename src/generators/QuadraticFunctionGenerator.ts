@@ -1,34 +1,40 @@
-import { MathFunction, NumberRange } from '../../entities';
-import { QuadraticGenerationOptions } from './QuadraticGenerationOptions';
-import { MathFunctionGenerator } from '../MathFunctionGenerator';
-import { random } from 'lodash';
+import { MathFunction, NumberRange } from '../entities';
+import { DefaultGenerationOptions } from '../entities';
+import { MathFunctionGenerator } from './MathFunctionGenerator';
+import { random, sample } from 'lodash';
+
+export type QuadraticFunctionType = 'STANDARD' | 'VERTEX' | 'FACTORED';
+
+export interface QuadraticGenerationOptions extends DefaultGenerationOptions {
+    format?: QuadraticFunctionType;
+}
 
 export class QuadraticFunctionGenerator extends MathFunctionGenerator<QuadraticGenerationOptions> {
     protected mathFunctionType = 'QUADRATIC';
+    private subTypeGenerators: Map<QuadraticFunctionType, (randRange: NumberRange) => string[]> = new Map();
+
+    constructor() {
+        super();
+        this.subTypeGenerators.set('STANDARD', this.generateStandardVariances);
+        this.subTypeGenerators.set('VERTEX', this.generateVertexVarianes);
+        this.subTypeGenerators.set('FACTORED', this.generateFactoredVariances);
+    }
 
     public generate({
         randRange = this.getDefaultRandRange(),
-        format = 'STANDARD',
+        format = this.getRandomSubType(),
     }: QuadraticGenerationOptions = {}): MathFunction {
-        const variances: string[] = this.generateVariances(format, randRange);
-        return this.makeMathFunction(variances);
+        const variances: string[] = this.subTypeGenerators.get(format)(randRange);
+        return this.makeMathFunction(variances, format);
     }
 
-    private generateVariances(format: string, randRange: NumberRange): string[] {
-        switch (format.toUpperCase()) {
-            case 'STANDARD':
-                return this.generateStandardVariances(randRange);
-            case 'VERTEX':
-                return this.generateVertexVarianes(randRange);
-            case 'FACTORED':
-                return this.generateFactoredVariances(randRange);
-            default:
-                return this.generateStandardVariances(randRange);
-        }
+    private getRandomSubType(): QuadraticFunctionType {
+        const randomSubTypePool: QuadraticFunctionType[] = ['STANDARD', 'FACTORED', 'VERTEX'];
+        const randomSubType: QuadraticFunctionType = sample(randomSubTypePool);
+        return randomSubType;
     }
 
     private generateStandardVariances(randRange: NumberRange): string[] {
-        this.setSubType('STANDARD');
         const a: number = random(randRange.min, randRange.max, false);
         const b: number = random(randRange.min, randRange.max, false);
         const c: number = random(randRange.min, randRange.max, false);
@@ -43,7 +49,6 @@ export class QuadraticFunctionGenerator extends MathFunctionGenerator<QuadraticG
     }
 
     private generateVertexVarianes(randRange: NumberRange): string[] {
-        this.setSubType('VERTEX');
         const a: number = random(randRange.min, randRange.max, false);
         const h: number = random(randRange.min, randRange.max, false);
         const k: number = random(randRange.min, randRange.max, false);
@@ -57,7 +62,6 @@ export class QuadraticFunctionGenerator extends MathFunctionGenerator<QuadraticG
     }
 
     private generateFactoredVariances(randRange: NumberRange): string[] {
-        this.setSubType('FACTORED');
         const a: number = random(randRange.min, randRange.max, false);
         const p: number = random(randRange.min, randRange.max, false);
         const q: number = random(randRange.min, randRange.max, false);

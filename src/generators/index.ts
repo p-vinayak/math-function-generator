@@ -1,7 +1,11 @@
-export { LinearFunctionGenerator } from './Linear';
-export { QuadraticFunctionGenerator, QuadraticGenerationOptions, QuadraticFunctionType } from './Quadratic';
+export { LinearFunctionGenerator } from './LinearFunctionGenerator';
+export {
+    QuadraticFunctionGenerator,
+    QuadraticGenerationOptions,
+    QuadraticFunctionType,
+} from './QuadraticFunctionGenerator';
 export {
     TrigonometricFunctionGenerator,
     TrigonometricGenerationOptions,
-    TrignometricFunctionType,
-} from './Trigonometric';
+    TrigonometricFunctionType,
+} from './TrigonometricFunctionGenerator';

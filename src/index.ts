@@ -6,5 +6,5 @@ export {
     QuadraticGenerationOptions,
     TrigonometricGenerationOptions,
     QuadraticFunctionType,
-    TrignometricFunctionType,
+    TrigonometricFunctionType,
 } from './generators';
