@@ -6,6 +6,7 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "dev": "ts-node-dev --respawn src/index.ts",
+        "test": "jest",
         "build": "tsc",
         "lint": "eslint . --ext .ts",
         "prepare": "npm run build"
