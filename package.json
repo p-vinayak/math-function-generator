@@ -9,7 +9,7 @@
         "test": "jest",
         "build": "tsc",
         "lint": "eslint . --ext .ts",
-        "prepare": "npm run build"
+        "prepare": "npm run build && npm run test"
     },
     "repository": "https://github.com/p-vinayak/math-function-generator",
     "author": "Vinayak Prataap (https://p-vinayak.dev)",
