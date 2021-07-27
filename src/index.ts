@@ -1,10 +1,3 @@
-export { NumberRange, DefaultGenerationOptions, MathFunction } from './entities';
-export {
-    LinearFunctionGenerator,
-    QuadraticFunctionGenerator,
-    TrigonometricFunctionGenerator,
-    QuadraticGenerationOptions,
-    TrigonometricGenerationOptions,
-    QuadraticFunctionType,
-    TrigonometricFunctionType,
-} from './generators';
+export { LinearFunction } from './generators/Linear';
+export { QuadraticFunction } from './generators/Quadratic';
+export { TrigonometricFunction } from './generators/Trigonometric';
